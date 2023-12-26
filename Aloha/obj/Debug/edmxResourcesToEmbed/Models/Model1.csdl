@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ALOHAModel.edmx" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminLogin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdminPass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlogPost">
+    <Key>
+      <PropertyRef Name="postId" />
+    </Key>
+    <Property Name="postId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlogTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BlogPicture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BlogPart" Type="String" MaxLength="6565" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BlogDescription" Type="String" MaxLength="6565" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Created_On" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Comments" Relationship="ALOHAModel.edmx.FK__Comment__postId__29221CFB" FromRole="BlogPost" ToRole="Comment" />
+  </EntityType>
+  <EntityType Name="ContactInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contactno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usermessage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBLUserInfo">
+    <Key>
+      <PropertyRef Name="IdUs" />
+    </Key>
+    <Property Name="IdUs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsernameUs" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordUs" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Designation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="ALOHAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminLogins" EntityType="Self.AdminLogin" />
+    <EntitySet Name="BlogPosts" EntityType="Self.BlogPost" />
+    <EntitySet Name="ContactInfoes" EntityType="Self.ContactInfo" />
+    <EntitySet Name="TBLUserInfoes" EntityType="Self.TBLUserInfo" />
+    <EntitySet Name="Comments" EntityType="ALOHAModel.edmx.Comment" />
+    <AssociationSet Name="FK__Comment__postId__29221CFB" Association="ALOHAModel.edmx.FK__Comment__postId__29221CFB">
+      <End Role="BlogPost" EntitySet="BlogPosts" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="postId" Type="Int32" />
+    <Property Name="CommentBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Created_On" Type="DateTime" Precision="3" />
+    <Property Name="CommentApproval" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BlogPost" Relationship="ALOHAModel.edmx.FK__Comment__postId__29221CFB" FromRole="Comment" ToRole="BlogPost" />
+  </EntityType>
+  <Association Name="FK__Comment__postId__29221CFB">
+    <End Type="ALOHAModel.edmx.BlogPost" Role="BlogPost" Multiplicity="0..1" />
+    <End Type="ALOHAModel.edmx.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlogPost">
+        <PropertyRef Name="postId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="postId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

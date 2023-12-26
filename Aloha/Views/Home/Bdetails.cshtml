@@ -1,0 +1,101 @@
+﻿@model Object[]
+@{
+    var Blog = (Aloha.Models.BlogPost)Model[0];
+    var comments = (List<Aloha.Models.Comment>)Model[1];
+}
+<header class="intro">
+    <div class="intro-slideshow">
+        @if (Blog.Category.Equals("Fashion"))
+        {
+            <img src="~/Images/Fashion/@Blog.BlogPicture" />
+        }
+        else
+        {
+            <img src="~/Images/Lifestyle/@Blog.BlogPicture" />
+        }
+        @*<img src="~/Images/Fashion/fashion1.jpg">*@
+
+    </div>
+    <div class="intro-title">
+        <h1>@Blog.BlogTitle</h1>
+    </div>
+</header>
+<script src="~/Scripts/indexhead.js"></script>
+
+<div class="describe" id="grad">
+    <div class="part1">
+        <p class="card-text">
+            @Blog.BlogPart
+        </p>
+    </div>
+    <br />
+    <br />
+    <div class="part2">
+        <article>
+            <p>
+                @Blog.BlogDescription
+            </p>
+        </article>
+    </div>
+</div>
+
+
+
+<div class="comment-thread">
+    <h1>Comments</h1>
+
+    <form action="/home/Comments" method="post">
+        <input name="postid" value="@Blog.postId" hidden />
+        <div><textarea name="commentstr" id="comments" rows="2" cols="50">
+        </textarea>
+        </div>
+        <input class="cbtn" type="submit" value="Submit">
+    </form>
+
+
+
+
+    <!-- Comment 1 start -->
+    @foreach (var item in comments)
+    {
+        if (item.CommentApproval != 0)
+        {
+            <details open class="comment" id="comment-1">
+
+                <summary>
+                    <div class="comment-heading">
+                        <div class="comment-info">
+                            <a href="#" class="comment-author">@item.CommentBy</a>
+                            <p class="m-0">
+                                @*4 days ago*@
+                                @item.Created_On
+                            </p>
+                        </div>
+                    </div>
+                </summary>
+                <p>
+                    @*This is really great! I fully agree with what you wrote, and this is sure to help me out in the future. Thank you for posting this.*@
+                    @item.Content
+                </p>
+            </details>
+        }
+    }
+
+    <script src="~/Scripts/card.js"></script>
+</div>
+
+@if (ViewBag.NoUser != null)
+{
+    <script type="text/javascript">
+
+        window.onload = function () {
+            alert("@ViewBag.NoUser");
+            window.location.href = "../Login";
+        };
+    </script>
+}
+
+@section Scripts
+{
+    <link href="~/Style/details.css" rel="stylesheet" />
+}   

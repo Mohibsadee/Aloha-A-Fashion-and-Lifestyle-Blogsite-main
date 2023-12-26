@@ -1,0 +1,122 @@
+﻿@using Aloha.Controllers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Style/footerStyle.css" rel="stylesheet" />
+    <link href="~/Style/word.css" rel="stylesheet" />
+    <link href="~/Style/indexStyle.css" rel="stylesheet" />
+    <link href="~/Style/indexheader.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Images/Aloha.jpg" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" >
+        <div class="container">
+            <div class="navbar-header" >
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ALOHA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    
+                    @{
+                        if (@Session["AdminName"] != null)
+                        {
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("DataShow", "DataShow", "Home")</li>
+                            <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
+                            <li>@Html.ActionLink("Comment", "User_Comment", "Home")</li>
+
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            @*<li>@Html.ActionLink("DataShow", "DataShow", "Home")</li>*@
+
+                        }
+                    }
+
+                </ul>
+                <ul class="nav navbar-nav" style="float:right !important">
+                    @if (@Session["AdminName"] != null)
+                    {
+                        <li><p style="color:#a16640;margin-top:15px;"> Hello Admin </p></li>
+                        <li>@Html.ActionLink("LogOut", "LogOut", "Home")</li>
+                    }
+                    else if (Session["UsernameSS"] != null)
+                    {
+                        <li><p style="color:#a16640;margin-top:15px;"><a href="/Home/ProfileShow"> Hello @Session["UsernameSS"] </a></p></li>
+                        <li>@Html.ActionLink("LogOut", "LogOut", "Home")</li>
+                    }
+                    else
+                    {
+
+                        <li>@Html.ActionLink("SignUp", "SignUp", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col">
+                            <img class="topLogo" src="~/Images/Aloha.jpg" alt="">
+                        </div>
+                        <div class="footer-col">
+                            <h4>company</h4>
+                            <ul>
+                                <li><a href="About.php">about us</a></li>
+                                <li><a href="#">our services</a></li>
+                                <li><a href="#">privacy policy</a></li>
+                                <li><a href="softUpload.php">affiliate program</a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="footer-col">
+                            <h4>follow us</h4>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <p>&copy; @DateTime.Now.Year - ALOHA-A Fashion & Lifestyle Blogsite</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

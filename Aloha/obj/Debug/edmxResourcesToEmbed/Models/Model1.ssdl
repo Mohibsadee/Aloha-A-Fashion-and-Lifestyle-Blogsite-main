@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ALOHAModel.edmx.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminLogin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="AdminPass" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlogPost">
+    <Key>
+      <PropertyRef Name="postId" />
+    </Key>
+    <Property Name="postId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogTitle" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="BlogPicture" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BlogPart" Type="varchar" MaxLength="6565" Nullable="false" />
+    <Property Name="BlogDescription" Type="varchar" MaxLength="6565" Nullable="false" />
+    <Property Name="Created_On" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="postId" Type="int" />
+    <Property Name="CommentBy" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Content" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Created_On" Type="datetime" />
+    <Property Name="CommentApproval" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="contactno" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="usermessage" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBLUserInfo">
+    <Key>
+      <PropertyRef Name="IdUs" />
+    </Key>
+    <Property Name="IdUs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsernameUs" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="PasswordUs" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+    <Property Name="Designation" Type="varchar" MaxLength="255" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__Comment__postId__29221CFB">
+    <End Role="BlogPost" Type="Self.BlogPost" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlogPost">
+        <PropertyRef Name="postId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="postId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ALOHAModeledmxStoreContainer">
+    <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogPost" EntityType="Self.BlogPost" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactInfo" EntityType="Self.ContactInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLUserInfo" EntityType="Self.TBLUserInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Comment__postId__29221CFB" Association="Self.FK__Comment__postId__29221CFB">
+      <End Role="BlogPost" EntitySet="BlogPost" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

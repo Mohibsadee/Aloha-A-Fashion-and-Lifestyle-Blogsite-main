@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Aloha.Models.Comment>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form method="post">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.postId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created_On)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentApproval)
+            </th>
+            <th></th>
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.CommentApproval == 0)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.postId)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created_On)
+                        </td>
+                        <td>
+                            <a class="remove" href="CommentApproved?id=@item.CommentId">Approved</a>
+                            <a class="remove" href="CommentDeleted?id=@item.CommentId">Deleted</a>
+                        </td>
+
+                    </tr>
+
+                }
+
+            }
+        </tbody>
+    </table>
+</form>

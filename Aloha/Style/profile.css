@@ -1,0 +1,22 @@
+﻿button{
+    max-width:max-content;
+    padding:5%;
+    margin-top:15px;
+}
+.container{
+    align-content:center;
+    position:relative;
+}
+
+.pname{
+    writing-mode: vertical-rl;
+    margin-top:-35%;
+    margin-left:70%;
+    position:absolute;
+    font-weight:900;
+
+}
+h1 {
+    font-size: 55px;
+    text-shadow: 1px 1px 1px #000, 10px 13px 15px blue;
+}

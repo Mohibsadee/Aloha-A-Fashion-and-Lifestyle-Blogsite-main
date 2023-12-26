@@ -1,0 +1,48 @@
+﻿@model Aloha.Models.TBLUserInfo
+
+@{
+    ViewBag.Title = "User Profile";
+}
+<div class="conatiner">
+    <form action="" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">User Name</label>
+            <input type="hidden" name="IdUs" id="IdUs" value="@Model.IdUs" />
+
+            <input required type="text" value="@Model.UsernameUs" class="form-control" name="UsernameUs" id="UsernameUs">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input required type="email" value="@Model.Email" class="form-control" name="Email" id="Email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Address</label>
+            <input type="text" class="form-control" value="@Model.Address" name="Address" id="Address" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Designation</label>
+            <input type="text" class="form-control" value="@Model.Designation" name="Designation" id="Designation" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">ContactNo</label>
+            <input type="text" class="form-control" maxlength="11" value="@Model.ContactNo" name="ContactNo" id="ContactNo" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="PasswordUs" id="PasswordUs" required>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
+<div class="pname">
+    
+    <h1>Welcome <br> @Model.UsernameUs</h1>
+</div>
+ 
+@section Scripts
+{
+    <link href="~/Style/profile.css" rel="stylesheet" />
+}

@@ -1,0 +1,32 @@
+﻿.tbody {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.imgbc {
+    width: 100%;
+    filter: brightness(30%);
+}
+
+.t1 {
+    position: absolute;
+    bottom: 25%;
+    font-size: 72px;
+    text-align: left;
+    left: 5%;
+    padding: 5%;
+    border-style: solid;
+    border-width: thick;
+}
+
+.mtitle {
+    text-align: center;
+    padding: 5%;
+}
+
+.mtext {
+    text-align: left;
+    font-size: 18px;
+    padding: 5%;
+}

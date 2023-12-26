@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<header class="intro">
+    <div class="intro-slideshow">
+        <img src="~/Images/fashion.jpg">
+        <img src="~/Images/lifestyle.jpg">
+        <img src="~/Images/food.jpg">
+    </div>
+    <div class="intro-header">
+        <h1>Aloha Blogs</h1>
+        <p>Know your passion through fashion</p>
+    </div>
+</header>
+<script src="~/Scripts/indexhead.js"></script>
+
+<div class="moto" ">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <img src="~/Images/lifestyle1.jpg" style="display: none";>
+            <h1>"Fashion is about something that comes from within you"</h1>
+            <h4>-Ralph Lauren</h4>
+        </div>
+        <div class="col-sm-8 col-md-3">
+            <div class="text">
+                <p>Explore</p>
+                <p>
+                    <span class="word wisteria">Fashion !</span>
+                    <span class="word belize">Lifestyle !</span>
+                    <span class="word pomegranate">Fancy !</span>
+                    <span class="word green">Tradition!</span>
+                    <span class="word midnight">World !</span>
+                </p>
+                <script src="~/Scripts/Word.js"></script>
+            </div>
+        </div>
+    </div>
+    <div class="landing_Page">
+        <div class="raw">
+            <div class="col-6 col-md-4">
+                <button id="all" class="all" onclick="window.location.href='/Home/Blogs?category=All'"> All </button>
+            </div>
+            <div class="col-6 col-md-4">
+                <button id="all" class="all" onclick="window.location.href='/Home/Blogs?category=Fashion'"> Fashion </button>
+
+            </div>
+            <div class="col-6 col-md-4">
+                <button id="lifestyle" class="lifestyle" onclick="window.location.href='/Home/Blogs?category=Lifestyle'"> Lifestyle </button>
+            </div>
+        </div>
+    </div>

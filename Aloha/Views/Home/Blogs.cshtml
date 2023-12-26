@@ -1,0 +1,138 @@
+﻿@model List<Aloha.Models.BlogPost>
+
+@{
+    ViewBag.Title = ViewBag.category;
+}
+<div class="wrapper">
+    <div class="box">
+        <p>@ViewBag.categoryName</p>
+        @*<p>Fashion</p>*@
+    </div>
+</div>
+
+
+
+
+
+@*@foreach (var item in Model)
+    {*@
+<div class="r">
+    @*<div class="col">
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="image-wrapper">
+                    <a class="image-link" href="">
+                        <img src="~/Images/Fashion/fashion1.jpg" />
+                    </a>
+                </div>
+                <div class="author">
+                    <p class="by">By:</p>
+                    <p class="name"> The Cool guy</p>
+
+                </div>
+                <div class="text-box-wrapper">
+                    <div class="text-box">
+                        <h1 class="heading">
+                            Fashion Week Styles
+                        </h1>
+
+                        <p class="card-text">
+                            Let's get this straight out of the way. Fashion in 2018 has been really hot. From Gucci sandals to Fendi handbags, we saw all of our favorite brands . .
+                        </p>
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <a class="button" href="">
+                        Read More
+                    </a>
+                    <div class="icon-class" id="icon">
+                        <i class="fa fa-heart" style="font-size:28px"></i>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>*@
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="col">
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <a class="image-link" href="">
+                            @if (item.Category.Equals("Fashion"))
+                            {
+                                <img src="~/Images/Fashion/@item.BlogPicture" />
+                            }
+                            else
+                            {
+                                <img src="~/Images/Lifestyle/@item.BlogPicture" />
+                            }
+
+                        </a>
+                    </div>
+                    @*<div class="author">
+                            <p class="by">By:</p>
+                            <p class="name"> The Cool guy</p>
+
+                        </div>*@
+                    <div class="text-box-wrapper">
+                        <div class="text-box">
+                            <h1 class="heading">
+                                @item.BlogTitle
+                            </h1>
+
+                            <p class="card-text">
+                                @item.BlogPart
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="button-wrapper">
+                        <a class="button" href="/Home/Bdetails/@item.postId">
+                            Read More
+                        </a>
+                        <div class="icon-class" id="icon">
+                            <i class="fa fa-heart" style="font-size:28px"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @*<td>
+                <a href="/Home/Bdetails/@item.postId">
+                    <img src="~/Images/Fashion/@item.BlogPicture" />
+                    <p>@item.BlogTitle yabadaba doooooo</p>
+                    <p>@item.BlogPart</p>
+                </a>
+
+            </td>*@
+
+    }
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts
+{
+    <link href="~/Style/cardStyle.css" rel="stylesheet" />
+    <link href="~/Style/box.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}

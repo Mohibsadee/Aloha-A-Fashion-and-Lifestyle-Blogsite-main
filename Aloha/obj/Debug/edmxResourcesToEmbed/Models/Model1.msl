@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ALOHAModeledmxStoreContainer" CdmEntityContainer="ALOHAEntities">
+    <EntitySetMapping Name="AdminLogins">
+      <EntityTypeMapping TypeName="ALOHAModel.edmx.AdminLogin">
+        <MappingFragment StoreEntitySet="AdminLogin">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminPass" ColumnName="AdminPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogPosts">
+      <EntityTypeMapping TypeName="ALOHAModel.edmx.BlogPost">
+        <MappingFragment StoreEntitySet="BlogPost">
+          <ScalarProperty Name="postId" ColumnName="postId" />
+          <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+          <ScalarProperty Name="BlogPicture" ColumnName="BlogPicture" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="BlogPart" ColumnName="BlogPart" />
+          <ScalarProperty Name="BlogDescription" ColumnName="BlogDescription" />
+          <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactInfoes">
+      <EntityTypeMapping TypeName="ALOHAModel.edmx.ContactInfo">
+        <MappingFragment StoreEntitySet="ContactInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="usermessage" ColumnName="usermessage" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLUserInfoes">
+      <EntityTypeMapping TypeName="ALOHAModel.edmx.TBLUserInfo">
+        <MappingFragment StoreEntitySet="TBLUserInfo">
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IdUs" ColumnName="IdUs" />
+          <ScalarProperty Name="UsernameUs" ColumnName="UsernameUs" />
+          <ScalarProperty Name="PasswordUs" ColumnName="PasswordUs" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="ALOHAModel.edmx.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="CommentApproval" ColumnName="CommentApproval" />
+          <ScalarProperty Name="Created_On" ColumnName="Created_On" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+          <ScalarProperty Name="postId" ColumnName="postId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
